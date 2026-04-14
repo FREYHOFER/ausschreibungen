@@ -43,6 +43,19 @@ App starten unter http://localhost:3000
 npm run seed
 ```
 
+## Ingestion (oeffentlichevergabe + TED)
+
+- Quelle 1: `OEFFENTLICHEVERGABE_API_URL` (+ optional `OEFFENTLICHEVERGABE_API_KEY`)
+- Quelle 2: `TED_API_URL` (+ optional `TED_API_KEY`)
+- Lauf:
+
+```bash
+npm run ingest
+```
+
+Der Lauf schreibt den Snapshot nach `src/data/ingested-tenders.json`.
+Die App liest zuerst diesen Snapshot und faellt nur bei leeren/fehlenden Daten auf Seeds zurueck.
+
 ## Projektstruktur
 
 - `src/data/seed.ts` Seed-Ausschreibungen und Beispielunternehmen

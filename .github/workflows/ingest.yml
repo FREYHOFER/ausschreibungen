@@ -1,0 +1,47 @@
+name: Daily Ingestion
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 3 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ingestion
+        env:
+          OEFFENTLICHEVERGABE_API_URL: ${{ secrets.OEFFENTLICHEVERGABE_API_URL }}
+          OEFFENTLICHEVERGABE_API_KEY: ${{ secrets.OEFFENTLICHEVERGABE_API_KEY }}
+          TED_API_URL: ${{ secrets.TED_API_URL }}
+          TED_API_KEY: ${{ secrets.TED_API_KEY }}
+        run: npm run ingest
+
+      - name: Commit updated snapshot
+        run: |
+          if git diff --quiet -- src/data/ingested-tenders.json; then
+            echo "No snapshot changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/ingested-tenders.json
+          git commit -m "chore: update ingested tenders snapshot"
+          git push
