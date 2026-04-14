@@ -14,8 +14,8 @@ export function buildFallbackReason(criteria: MatchCriterion[]): string {
   const bestCriterion = [...criteria].sort((a, b) => b.score - a.score)[0];
 
   if (!bestCriterion) {
-    return "Keine ausreichenden Signale fuer eine belastbare Einschaetzung.";
+    return "Keine ausreichenden Signale für eine belastbare Einschätzung.";
   }
 
-  return `Bester Treffer in ${bestCriterion.name}, weitere Kriterien sind ausbaufaehig.`;
+  return `Bester Treffer in ${bestCriterion.name}, weitere Kriterien sind ausbaufähig.`;
 }

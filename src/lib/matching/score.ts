@@ -65,7 +65,7 @@ function scoreRegion(tender: Tender, company: CompanyProfile): MatchCriterion {
     score: hasRegionalFit ? 1 : 0,
     explanation: hasRegionalFit
       ? "Leistungsgebiet deckt die ausgeschriebene Region ab."
-      : "Region liegt ausserhalb des hinterlegten Leistungsgebiets.",
+      : "Region liegt außerhalb des hinterlegten Leistungsgebiets.",
   };
 }
 

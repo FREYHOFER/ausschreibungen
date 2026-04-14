@@ -93,7 +93,7 @@ export default function CompanyPage() {
         <div className="section-head">
           <h2>Unternehmensprofil</h2>
           <p className="muted">
-            Dieses Formular simuliert das spaetere Firmenprofil und berechnet sofort
+            Dieses Formular simuliert das spätere Firmenprofil und berechnet sofort
             passende Ausschreibungen.
           </p>
         </div>
@@ -187,7 +187,7 @@ export default function CompanyPage() {
       <section className="panel">
         <div className="section-head">
           <h2>Live Match-Ergebnisse</h2>
-          <p className="muted">Sortiert nach Fit-Score fuer {simulatedCompany.name}.</p>
+          <p className="muted">Sortiert nach Fit-Score für {simulatedCompany.name}.</p>
         </div>
 
         <div className="stack">
@@ -220,7 +220,7 @@ export default function CompanyPage() {
                   Fehlende Nachweise: {result.missingEvidence.join(", ")}
                 </p>
               ) : (
-                <p className="ok-panel">Keine kritischen Nachweisluecken erkannt.</p>
+                <p className="ok-panel">Keine kritischen Nachweislücken erkannt.</p>
               )}
             </article>
           ))}

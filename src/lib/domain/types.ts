@@ -4,7 +4,11 @@ export type TenderFocusArea =
   | "data-analytics"
   | "software-engineering"
   | "managed-services"
-  | "networking";
+  | "networking"
+  | "reinigung"
+  | "bau"
+  | "facility-management"
+  | "transport-logistik";
 
 export interface Tender {
   id: string;

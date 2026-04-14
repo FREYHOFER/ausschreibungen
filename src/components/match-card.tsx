@@ -14,7 +14,7 @@ export function MatchCard({ companyName, result }: MatchCardProps) {
         <ScorePill score={result.fitScore} />
       </div>
 
-      <ul className="chip-list" aria-label="Match Begruendungen">
+      <ul className="chip-list" aria-label="Match Begründungen">
         {result.reasons.map((reason) => (
           <li key={reason} className="chip">
             {reason}

@@ -28,7 +28,7 @@ export default async function TenderDetailPage({
 
   return (
     <div className="app-shell">
-      <AppHeader subtitle="Detailansicht mit transparenter Score-Begruendung pro Anbieter." />
+      <AppHeader subtitle="Detailansicht mit transparenter Score-Begründung pro Anbieter." />
 
       <section className="panel">
         <p className="eyebrow">Ausschreibung im Fokus</p>
@@ -48,7 +48,7 @@ export default async function TenderDetailPage({
         <div className="section-head">
           <h2>Match-Ranking</h2>
           <p className="muted">
-            Je Treffer werden Gruende, fehlende Nachweise und Kriterienwerte offengelegt.
+            Je Treffer werden Gründe, fehlende Nachweise und Kriterienwerte offengelegt.
           </p>
         </div>
 
@@ -60,7 +60,7 @@ export default async function TenderDetailPage({
                 result={match}
               />
 
-              <div className="criteria-grid" aria-label="Kriterienaufschluesselung">
+              <div className="criteria-grid" aria-label="Kriterienaufschlüsselung">
                 {match.criteria.map((criterion) => (
                   <div key={criterion.name} className="criterion-card">
                     <header>
