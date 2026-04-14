@@ -58,6 +58,16 @@ async function main() {
     return;
   }
 
+  if (normalized.length === 0) {
+    console.log(
+      `[ingest] Keine verwertbaren Datensätze erhalten; Snapshot wird nicht überschrieben.`,
+    );
+    console.log(
+      `[ingest] geladen: oeffentlichevergabe=${loadedCount.oeffentlichevergabe}, ted=${loadedCount.ted}, gefiltert(DE)=${germanOnly.length}, dedupliziert=${deduplicated.length}, final=0`,
+    );
+    return;
+  }
+
   const snapshot: Snapshot = {
     generatedAt: new Date().toISOString(),
     sourceCounts: loadedCount,
