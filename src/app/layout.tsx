@@ -15,7 +15,7 @@ const bodyMono = Source_Code_Pro({
 export const metadata: Metadata = {
   title: "Vergabe Radar MVP",
   description:
-    "MVP fuer erklaerbares Ausschreibungs-Matching von IT-Dienstleistern mit Fit-Score und Begruendung.",
+    "MVP für erklärbares Ausschreibungs-Matching von IT-Dienstleistern mit Fit-Score und Begründung.",
 };
 
 export default function RootLayout({

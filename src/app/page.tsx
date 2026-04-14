@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <div className="app-shell">
-      <AppHeader subtitle="Erklaerbares Matching fuer oeffentliche IT-Ausschreibungen." />
+      <AppHeader subtitle="Erklärbares Matching für öffentliche IT-Ausschreibungen." />
 
       <section className="panel hero">
         <div>

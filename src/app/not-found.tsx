@@ -10,7 +10,7 @@ export default function NotFoundPage() {
           Die angeforderte Detailseite existiert nicht oder wurde entfernt.
         </p>
         <Link className="inline-link" href="/">
-          Zurueck zum Dashboard
+          Zurück zum Dashboard
         </Link>
       </section>
     </div>

@@ -15,11 +15,11 @@ export const seedTenders: Tender[] = [
     keywords: ["Kubernetes", "AWS", "Betrieb", "SIEM", "24/7"],
     requiredEvidence: ["ISO 27001", "BSI Grundschutz"],
     description:
-      "Gesucht wird ein IT-Dienstleister fuer den sicheren Plattformbetrieb inkl. Monitoring, Incident Response und kontinuierlicher Optimierung.",
+      "Gesucht wird ein IT-Dienstleister für den sicheren Plattformbetrieb inkl. Monitoring, Incident Response und kontinuierlicher Optimierung.",
   },
   {
     id: "tender-hamburg-data",
-    title: "Datenplattform und Dashboarding fuer Mobilitaetsdaten",
+    title: "Datenplattform und Dashboarding für Mobilitätsdaten",
     issuer: "Freie und Hansestadt Hamburg",
     region: "Hamburg",
     publicationDate: "2026-04-06",
@@ -28,15 +28,15 @@ export const seedTenders: Tender[] = [
     estimatedValueMin: 90000,
     estimatedValueMax: 180000,
     focusAreas: ["data-analytics", "software-engineering"],
-    keywords: ["Power BI", "ETL", "Datenqualitaet", "Open Data"],
+    keywords: ["Power BI", "ETL", "Datenqualität", "Open Data"],
     requiredEvidence: ["DSGVO Konzept"],
     description:
-      "Aufbau einer skalierbaren Datenpipeline mit visuellen Dashboards fuer verkehrsbezogene Auswertungen und monatliche Reports.",
+      "Aufbau einer skalierbaren Datenpipeline mit visuellen Dashboards für verkehrsbezogene Auswertungen und monatliche Reports.",
   },
   {
     id: "tender-muenchen-soc",
-    title: "Security Operations Center fuer stadtnahe Kliniken",
-    issuer: "Klinikverbund Muenchen",
+    title: "Security Operations Center für stadtnahe Kliniken",
+    issuer: "Klinikverbund München",
     region: "Bayern",
     publicationDate: "2026-04-11",
     deadlineDate: "2026-05-02",
@@ -47,12 +47,12 @@ export const seedTenders: Tender[] = [
     keywords: ["SOC", "SIEM", "Forensik", "NIS2", "KRITIS"],
     requiredEvidence: ["ISO 27001", "KRITIS Referenzen"],
     description:
-      "24/7 SOC-Leistungen inkl. Incident Handling, Threat Hunting und Compliance-Reporting fuer kritische Versorgungsinfrastruktur.",
+      "24/7 SOC-Leistungen inkl. Incident Handling, Threat Hunting und Compliance-Reporting für kritische Versorgungsinfrastruktur.",
   },
   {
     id: "tender-koeln-netzwerk",
     title: "Modernisierung Schulnetzwerk und WLAN-Management",
-    issuer: "Stadt Koeln - Amt fuer Schul-IT",
+    issuer: "Stadt Köln - Amt für Schul-IT",
     region: "Nordrhein-Westfalen",
     publicationDate: "2026-04-03",
     deadlineDate: "2026-04-28",
@@ -63,12 +63,12 @@ export const seedTenders: Tender[] = [
     keywords: ["WLAN", "Switching", "Monitoring", "M365"],
     requiredEvidence: ["ITIL Nachweis"],
     description:
-      "Planung und Betrieb eines resilienten Schulnetzwerks inklusive Monitoring und Service Desk fuer 45 Standorte.",
+      "Planung und Betrieb eines resilienten Schulnetzwerks inklusive Monitoring und Service Desk für 45 Standorte.",
   },
   {
     id: "tender-remote-dev",
     title: "Weiterentwicklung Fachverfahren inklusive Barrierefreiheit",
-    issuer: "Bundesbehoerde Digitales",
+    issuer: "Bundesbehörde Digitales",
     region: "Bundesweit",
     publicationDate: "2026-04-09",
     deadlineDate: "2026-05-05",
@@ -79,7 +79,7 @@ export const seedTenders: Tender[] = [
     keywords: ["TypeScript", "React", "Accessibility", "CI/CD"],
     requiredEvidence: ["BITV Erfahrung"],
     description:
-      "Gesucht wird ein Entwicklungspartner fuer modulare Weiterentwicklung eines Fachverfahrens mit Fokus auf Usability und Testautomatisierung.",
+      "Gesucht wird ein Entwicklungspartner für modulare Weiterentwicklung eines Fachverfahrens mit Fokus auf Usability und Testautomatisierung.",
   },
 ];
 
@@ -98,8 +98,8 @@ export const seedCompanies: CompanyProfile[] = [
   {
     id: "comp-secunova",
     name: "Secunova Cyber Defense AG",
-    headquarter: "Muenchen",
-    serviceRegions: ["Bayern", "Baden-Wuerttemberg", "Bundesweit"],
+    headquarter: "München",
+    serviceRegions: ["Bayern", "Baden-Württemberg", "Bundesweit"],
     focusAreas: ["cybersecurity", "managed-services", "cloud"],
     keywords: ["SOC", "SIEM", "NIS2", "KRITIS", "Incident Response"],
     certifications: ["ISO 27001", "KRITIS Referenzen", "BSI Grundschutz"],
@@ -109,7 +109,7 @@ export const seedCompanies: CompanyProfile[] = [
   {
     id: "comp-netline",
     name: "Netline Public IT Solutions",
-    headquarter: "Koeln",
+    headquarter: "Köln",
     serviceRegions: ["Nordrhein-Westfalen", "Rheinland-Pfalz"],
     focusAreas: ["networking", "managed-services", "software-engineering"],
     keywords: ["WLAN", "Switching", "Service Desk", "M365", "Monitoring"],
@@ -123,7 +123,7 @@ export const seedCompanies: CompanyProfile[] = [
     headquarter: "Berlin",
     serviceRegions: ["Berlin", "Brandenburg", "Sachsen"],
     focusAreas: ["data-analytics", "software-engineering"],
-    keywords: ["Open Data", "Python", "Datenqualitaet", "Dashboards"],
+    keywords: ["Open Data", "Python", "Datenqualität", "Dashboards"],
     certifications: ["DSGVO Konzept"],
     minProjectVolume: 70000,
     maxProjectVolume: 250000,
