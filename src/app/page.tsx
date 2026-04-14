@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <div className="app-shell">
-      <AppHeader subtitle="Erklärbares Matching für öffentliche IT-Ausschreibungen." />
+      <AppHeader subtitle="Erklärbares Matching für öffentliche Ausschreibungen aus allen Branchen." />
 
       <section className="panel hero">
         <div>
@@ -27,7 +27,7 @@ export default function Home() {
           <h2>Relevanz statt Ausschreibungs-Rauschen</h2>
           <p>
             Diese Version priorisiert die Frage: Welche Ausschreibung passt wirklich
-            zu welchem IT-Dienstleister und warum?
+            zu welchem Dienstleister – ob IT, Reinigung, Bau oder Logistik – und warum?
           </p>
         </div>
 

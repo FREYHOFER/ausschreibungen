@@ -7,6 +7,10 @@ export const focusAreaLabels: Record<TenderFocusArea, string> = {
   "software-engineering": "Softwareentwicklung",
   "managed-services": "Managed Services",
   networking: "Netzwerkbetrieb",
+  reinigung: "Gebäudereinigung",
+  bau: "Bauleistungen",
+  "facility-management": "Facility Management",
+  "transport-logistik": "Transport & Logistik",
 };
 
 export function labelFocusArea(area: TenderFocusArea): string {
