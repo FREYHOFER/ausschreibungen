@@ -1,12 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AppHeader } from "@/components/app-header";
 import { ScorePill } from "@/components/score-pill";
 import { seedTenders } from "@/data/seed";
 import { focusAreaLabels } from "@/lib/domain/catalogs";
 import { formatDate, formatRange } from "@/lib/domain/format";
-import { CompanyProfile, TenderFocusArea } from "@/lib/domain/types";
+import { CompanyProfile, Tender, TenderFocusArea } from "@/lib/domain/types";
 import { calculateMatch } from "@/lib/matching/score";
 
 const focusOptions = Object.keys(focusAreaLabels) as TenderFocusArea[];
@@ -36,6 +36,7 @@ function toggleArrayValue<T extends string>(values: T[], value: T): T[] {
 }
 
 export default function CompanyPage() {
+  const [tenders, setTenders] = useState<Tender[]>(seedTenders);
   const [companyName, setCompanyName] = useState("Neues IT-Unternehmen");
   const [focusAreas, setFocusAreas] = useState<TenderFocusArea[]>([
     "cloud",
@@ -77,13 +78,39 @@ export default function CompanyPage() {
   ]);
 
   const rankedMatches = useMemo(() => {
-    return seedTenders
+    return tenders
       .map((tender) => ({
         tender,
         result: calculateMatch(tender, simulatedCompany),
       }))
       .sort((left, right) => right.result.fitScore - left.result.fitScore);
-  }, [simulatedCompany]);
+  }, [simulatedCompany, tenders]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadTenders() {
+      try {
+        const response = await fetch("/api/matches");
+
+        if (!response.ok) {
+          return;
+        }
+
+        const payload = (await response.json()) as { tenders?: Tender[] };
+
+        if (isMounted && Array.isArray(payload.tenders) && payload.tenders.length > 0) {
+          setTenders(payload.tenders);
+        }
+      } catch {}
+    }
+
+    void loadTenders();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <div className="app-shell">
