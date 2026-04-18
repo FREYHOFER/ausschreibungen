@@ -90,6 +90,12 @@ export default function Home() {
                 <Link className="inline-link" href={`/tenders/${tender.id}`}>
                   Zur Detailanalyse
                 </Link>
+
+                {tender.sourceUrl && (
+                  <Link className="inline-link" href={tender.sourceUrl} target="_blank" rel="noopener noreferrer">
+                    Zur Originalanzeige ↗
+                  </Link>
+                )}
               </article>
             );
           })}
