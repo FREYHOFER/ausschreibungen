@@ -18,4 +18,5 @@ export interface RawTender {
   keywords?: string[];
   requiredEvidence?: string[];
   description?: string;
+  sourceUrl?: string;
 }
