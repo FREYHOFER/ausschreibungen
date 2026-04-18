@@ -45,7 +45,13 @@ npm run seed
 
 ## Ingestion (oeffentlichevergabe + TED)
 
-- Quelle 1: `OEFFENTLICHEVERGABE_API_URL` (+ optional `OEFFENTLICHEVERGABE_API_KEY`)
+- Quelle 1 (offiziell, ohne Key): Open Data des Bekanntmachungsservice
+	- Standard-Endpoint: `https://oeffentlichevergabe.de/api/notice-exports`
+	- Standardabruf: Vortag (`pubDay`) als `csv.zip`
+	- Optional steuerbar via:
+		- `OEFFENTLICHEVERGABE_PUB_DAY=YYYY-MM-DD`
+		- `OEFFENTLICHEVERGABE_PUB_MONTH=YYYY-MM`
+		- `OEFFENTLICHEVERGABE_API_URL` (vollstaendige URL-Override)
 - Quelle 2: `TED_API_URL` (+ optional `TED_API_KEY`)
 - Lauf:
 

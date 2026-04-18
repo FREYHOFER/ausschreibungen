@@ -28,7 +28,6 @@ jobs:
       - name: Run ingestion
         env:
           OEFFENTLICHEVERGABE_API_URL: ${{ secrets.OEFFENTLICHEVERGABE_API_URL }}
-          OEFFENTLICHEVERGABE_API_KEY: ${{ secrets.OEFFENTLICHEVERGABE_API_KEY }}
           TED_API_URL: ${{ secrets.TED_API_URL }}
           TED_API_KEY: ${{ secrets.TED_API_KEY }}
         run: npm run ingest
