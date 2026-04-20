@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppHeader } from "@/components/app-header";
 import { MatchCard } from "@/components/match-card";
@@ -42,6 +43,12 @@ export default async function TenderDetailPage({
           <span>Frist {formatDate(tender.deadlineDate)}</span>
           <span>Volumen {formatRange(tender.estimatedValueMin, tender.estimatedValueMax)}</span>
         </div>
+
+        {tender.sourceUrl && (
+          <Link className="inline-link" href={tender.sourceUrl} target="_blank" rel="noopener noreferrer">
+            Zur Originalanzeige ↗
+          </Link>
+        )}
       </section>
 
       <section className="panel">

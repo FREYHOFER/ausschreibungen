@@ -132,6 +132,7 @@ export function normalizeRawTender(rawTender: RawTender): Tender {
     description:
       rawTender.description ??
       "Automatisch importierte Bekanntmachung aus externer Vergabequelle.",
+    ...(rawTender.sourceUrl ? { sourceUrl: rawTender.sourceUrl } : {}),
   };
 }
 

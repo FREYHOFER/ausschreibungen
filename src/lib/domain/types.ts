@@ -24,6 +24,7 @@ export interface Tender {
   keywords: string[];
   requiredEvidence: string[];
   description: string;
+  sourceUrl?: string;
 }
 
 export interface CompanyProfile {

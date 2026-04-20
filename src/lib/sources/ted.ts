@@ -58,6 +58,7 @@ function mapRecordToRawTender(record: RawRecord): RawTender {
     keywords: asStringArray(record.keywords),
     requiredEvidence: asStringArray(record.requiredEvidence),
     description: asString(record.description ?? record.objectDescription),
+    sourceUrl: asString(record.sourceUrl ?? record.url ?? record.link ?? record.noticeUrl),
   };
 }
 
