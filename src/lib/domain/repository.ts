@@ -7,6 +7,37 @@ interface IngestedSnapshot {
   tenders?: Tender[];
 }
 
+function buildSourceUrlFromTenderId(tenderId: string): string | undefined {
+  if (tenderId.startsWith("oeffentlichevergabe-")) {
+    const noticeId = tenderId.slice("oeffentlichevergabe-".length).trim();
+
+    if (noticeId.length > 0) {
+      return `https://www.oeffentlichevergabe.de/ui/notice/${noticeId}`;
+    }
+  }
+
+  return undefined;
+}
+
+function withSourceUrls(tenders: Tender[]): Tender[] {
+  return tenders.map((tender) => {
+    if (tender.sourceUrl) {
+      return tender;
+    }
+
+    const derivedSourceUrl = buildSourceUrlFromTenderId(tender.id);
+
+    if (!derivedSourceUrl) {
+      return tender;
+    }
+
+    return {
+      ...tender,
+      sourceUrl: derivedSourceUrl,
+    };
+  });
+}
+
 function getIngestedTenders(): Tender[] {
   try {
     const snapshotPath = join(process.cwd(), "src/data/ingested-tenders.json");
@@ -14,11 +45,11 @@ function getIngestedTenders(): Tender[] {
     const parsed = JSON.parse(snapshotContent) as IngestedSnapshot;
 
     if (Array.isArray(parsed.tenders) && parsed.tenders.length > 0) {
-      return parsed.tenders;
+      return withSourceUrls(parsed.tenders);
     }
   } catch {}
 
-  return seedTenders;
+  return withSourceUrls(seedTenders);
 }
 
 export function getTenders(): Tender[] {

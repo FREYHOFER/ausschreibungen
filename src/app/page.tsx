@@ -8,7 +8,7 @@ import { calculateMatchesForAllTenders } from "@/lib/matching/score";
 export default function Home() {
   const tenders = getTenders();
   const companies = getCompanies();
-  const companyById = new Map(companies.map((company) => [company.id, company]));
+  const company = companies[0];
   const matchesByTender = calculateMatchesForAllTenders(tenders, companies);
   const averageTopScore = Math.round(
     tenders.reduce((sum, tender) => {
@@ -27,7 +27,7 @@ export default function Home() {
           <h2>Relevanz statt Ausschreibungs-Rauschen</h2>
           <p>
             Diese Version priorisiert die Frage: Welche Ausschreibung passt wirklich
-            zu welchem Dienstleister – ob IT, Reinigung, Bau oder Logistik – und warum?
+            zu deinem Unternehmen und warum?
           </p>
         </div>
 
@@ -37,8 +37,8 @@ export default function Home() {
             <strong>{tenders.length}</strong>
           </article>
           <article className="kpi-card">
-            <span>Gematchte Dienstleister</span>
-            <strong>{companies.length}</strong>
+            <span>Profil im Vergleich</span>
+            <strong>{company?.name ?? "Nicht hinterlegt"}</strong>
           </article>
           <article className="kpi-card">
             <span>Durchschnitt Top-Fit</span>
@@ -50,12 +50,12 @@ export default function Home() {
       <section className="panel">
         <div className="section-head">
           <h2>Offene Ausschreibungen</h2>
-          <p className="muted">Top-3 Empfehlungen pro Ausschreibung.</p>
+          <p className="muted">Fit-Analyse pro Ausschreibung für dein Profil.</p>
         </div>
 
         <div className="tender-grid">
           {tenders.map((tender) => {
-            const topMatches = matchesByTender[tender.id].slice(0, 3);
+            const bestMatch = matchesByTender[tender.id]?.[0];
 
             return (
               <article key={tender.id} className="tender-card">
@@ -75,17 +75,17 @@ export default function Home() {
                   <span>{daysUntil(tender.deadlineDate)} Tage verbleibend</span>
                 </div>
 
-                <div className="match-list">
-                  {topMatches.map((match) => (
-                    <div className="match-row" key={match.companyId}>
+                {bestMatch && (
+                  <div className="match-list">
+                    <div className="match-row" key={bestMatch.companyId}>
                       <div>
-                        <strong>{companyById.get(match.companyId)?.name ?? "Unbekannt"}</strong>
-                        <p>{match.reasons[0]}</p>
+                        <strong>{company?.name ?? "Dein Unternehmen"}</strong>
+                        <p>{bestMatch.reasons[0]}</p>
                       </div>
-                      <ScorePill score={match.fitScore} />
+                      <ScorePill score={bestMatch.fitScore} />
                     </div>
-                  ))}
-                </div>
+                  </div>
+                )}
 
                 <Link className="inline-link" href={`/tenders/${tender.id}`}>
                   Zur Detailanalyse

@@ -17,19 +17,22 @@ export default async function TenderDetailPage({
   params,
 }: TenderDetailPageProps) {
   const { id } = await params;
-  const tender = getTenderById(id);
+  const selectedTender = getTenderById(id);
 
-  if (!tender) {
+  if (!selectedTender) {
     notFound();
+    return null;
   }
 
+  const tender = selectedTender;
+
   const companies = getCompanies();
-  const companyById = new Map(companies.map((company) => [company.id, company]));
-  const matches = calculateMatchesForTender(tender, companies);
+  const company = companies[0];
+  const match = company ? calculateMatchesForTender(tender, [company])[0] : undefined;
 
   return (
     <div className="app-shell">
-      <AppHeader subtitle="Detailansicht mit transparenter Score-Begründung pro Anbieter." />
+      <AppHeader subtitle="Detailansicht mit transparenter Score-Begründung für dein Profil." />
 
       <section className="panel">
         <p className="eyebrow">Ausschreibung im Fokus</p>
@@ -53,17 +56,17 @@ export default async function TenderDetailPage({
 
       <section className="panel">
         <div className="section-head">
-          <h2>Match-Ranking</h2>
+          <h2>Fit-Analyse für dein Unternehmen</h2>
           <p className="muted">
-            Je Treffer werden Gründe, fehlende Nachweise und Kriterienwerte offengelegt.
+            Gründe, fehlende Nachweise und Kriterienwerte für dein Profil im Überblick.
           </p>
         </div>
 
-        <div className="stack">
-          {matches.map((match) => (
+        {match ? (
+          <div className="stack">
             <article key={match.companyId} className="stack-item">
               <MatchCard
-                companyName={companyById.get(match.companyId)?.name ?? "Unbekannt"}
+                companyName={company?.name ?? "Dein Unternehmen"}
                 result={match}
               />
 
@@ -80,8 +83,10 @@ export default async function TenderDetailPage({
                 ))}
               </div>
             </article>
-          ))}
-        </div>
+          </div>
+        ) : (
+          <p className="muted">Kein Unternehmensprofil hinterlegt.</p>
+        )}
       </section>
     </div>
   );
