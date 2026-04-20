@@ -392,6 +392,9 @@ function mapNoticeToRawTender(
     estimatedValueMax,
     keywords: keywords.length > 0 ? keywords : undefined,
     description: purpose?.description?.trim(),
+    sourceUrl: notice.noticeIdentifier?.trim()
+      ? `https://www.oeffentlichevergabe.de/ui/notice/${notice.noticeIdentifier.trim()}`
+      : undefined,
   };
 }
 
